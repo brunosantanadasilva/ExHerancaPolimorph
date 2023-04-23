@@ -23,34 +23,28 @@ namespace ExHerancaPolimorph
                     Console.Write("Enter only ( y - yes ) ou ( n - no ): ");
                     outsourced = char.Parse(Console.ReadLine());
                 }
-
+                Console.Write("Name: ");
+                string name = Console.ReadLine();
+                Console.Write("Hours: ");
+                int hours = int.Parse(Console.ReadLine());
+                Console.Write("Value per hour: $");
+                double valuePerHour = double.Parse(Console.ReadLine(), CultureInfo.InvariantCulture);
+                
                 if (outsourced == 'y')
                 {
-                    Console.Write("Name: ");
-                    string name = Console.ReadLine();
-                    Console.Write("Hours: ");
-                    int hours = int.Parse(Console.ReadLine());
-                    Console.Write("Value per hour: $");
-                    double valuePerHour = double.Parse(Console.ReadLine(), CultureInfo.InvariantCulture);
                     Console.Write("Aditional charge: $");
-                    double aditionalCharge = double.Parse(Console.ReadLine(), CultureInfo.InvariantCulture);
-                    Employee employee = new OutsourcedEmployee(name, hours, valuePerHour, aditionalCharge);
-                    employees.Add(employee);
+                    double aditionalCharge = double.Parse(Console.ReadLine(), CultureInfo.InvariantCulture);           
+                    employees.Add(new OutsourcedEmployee(name, hours, valuePerHour, aditionalCharge));
                     Console.WriteLine();
                 }
-                else if (outsourced == 'n')
+                else
                 {
-                    Console.Write("Name: ");
-                    string name = Console.ReadLine();
-                    Console.Write("Hours: ");
-                    int hours = int.Parse(Console.ReadLine());
-                    Console.Write("Value per hour: $");
-                    double valuePerHour = double.Parse(Console.ReadLine(), CultureInfo.InvariantCulture);
-                    Employee employee = new Employee(name, hours, valuePerHour);
-                    employees.Add(employee);
-                    Console.WriteLine();
+                    employees.Add(new Employee(name, hours, valuePerHour));
                 }
+
             }
+            
+            Console.WriteLine();
 
             Console.WriteLine("PAYMENTS:");
             foreach (Employee employee in employees)
